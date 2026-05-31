@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=IBM+Plex+Serif:ital,wght@0,100;1,100;1,200&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Tokens ─── */
+
+@layer base {
+  :root {
+    /* Dark — warm near-black */
+    --color-bg-primary:   #0E0D0B;
+    --color-bg-card:      #181613;
+    --color-text-primary: #F0EDE6;
+    --color-text-muted:   #82786E;
+    --color-accent:       #DF7C3C;
+    --color-border:       rgba(240, 237, 230, 0.10);
+    --font-display: 'IBM Plex Serif', Georgia, serif;
+    --font-mono:    'IBM Plex Mono', monospace;
+    --font-body:    'IBM Plex Sans Condensed', system-ui, sans-serif;
+  }
+
+  :root:not(.dark) {
+    /* Light — warm off-white */
+    --color-bg-primary:   #FAF8F4;
+    --color-bg-card:      #F2EFE9;
+    --color-text-primary: #0E0D0B;
+    --color-text-muted:   #7A7068;
+    --color-accent:       #B85520;
+    --color-border:       rgba(14, 13, 11, 0.11);
+  }
+
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  * { box-sizing: border-box; }
+}
+
+/* ─── Semantic Utilities ─── */
+
+@layer utilities {
+  .bg-wx-base  { background-color: var(--color-bg-primary); }
+  .bg-wx-card  { background-color: var(--color-bg-card); }
+  .bg-wx-accent { background-color: var(--color-accent); }
+
+  .text-wx-base   { color: var(--color-text-primary); }
+  .text-wx-muted  { color: var(--color-text-muted); }
+  .text-wx-accent { color: var(--color-accent); }
+
+  .border-wx { border-color: var(--color-border); }
+
+  .font-display { font-family: var(--font-display); }
+  .font-mono    { font-family: var(--font-mono); }
+  .font-body    { font-family: var(--font-body); }
+
+  /* Temperature */
+  .temp-display {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 100;
+    font-size: clamp(5.5rem, 20vw, 10.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+    color: var(--color-accent);
+  }
+
+  /* Uppercase condensed label */
+  .section-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Full-width horizontal rule */
+  .rule-wx {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0;
+  }
+
+  /* Search input */
+  .wx-search-input {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 0.35rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-primary);
+    width: 160px;
+    outline: none;
+    transition: width 0.3s ease, border-color 0.2s ease;
+  }
+
+  .wx-search-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .wx-search-input:focus {
+    width: 220px;
+    border-color: var(--color-accent);
+  }
+
+  /* Search button */
+  .wx-search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    border: none;
+    background-color: var(--color-accent);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .wx-search-btn:hover { opacity: 0.8; }
+
+  .border-wx-accent { border-color: var(--color-accent); }
+
+  /* Background atmosphere */
+  .wx-orb {
+    position: fixed;
+    border-radius: 9999px;
+    background-color: var(--color-accent);
+    filter: blur(110px);
+    pointer-events: none;
+    will-change: transform;
+    z-index: 0;
+  }
+
+  .wx-orb-1 {
+    width: 650px;
+    height: 650px;
+    top: -220px;
+    left: -140px;
+    opacity: 0.10;
+    animation: orbFloat 22s ease-in-out infinite;
+  }
+
+  .wx-orb-2 {
+    width: 500px;
+    height: 500px;
+    bottom: -180px;
+    right: -90px;
+    opacity: 0.07;
+    animation: orbFloat2 28s ease-in-out infinite;
+  }
+
+  .wx-dot-grid {
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wx-page-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Live indicator */
+  .live-dot {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: var(--color-accent);
+    animation: livePulse 2.6s ease-in-out infinite;
+  }
+
+  /* Temperature range bar */
+  .temp-range-bar {
+    height: 3px;
+    border-radius: 9999px;
+    background-color: var(--color-border);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .temp-range-fill {
+    position: absolute;
+    inset-block: 0;
+    border-radius: 9999px;
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-accent) 60%, transparent),
+      var(--color-accent)
+    );
+  }
+
+  /* Forecast card */
+  .forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    flex: 1;
+    padding: 1.25rem 0.5rem 1rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    transition: border-color 0.2s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+  }
+
+  .forecast-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px) rotate(-0.6deg);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-bg-card) 25%,
+      color-mix(in srgb, var(--color-bg-card) 70%, var(--color-text-primary) 5%) 50%,
+      var(--color-bg-card) 75%
+    );
+    background-size: 600px 100%;
+    animation: shimmer 1.6s infinite linear;
+    border-radius: 4px;
+  }
+}
+
+/* ─── Keyframe Animations ─── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tempReveal {
+  from { opacity: 0; transform: translateX(-12px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateX(0);     filter: blur(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes orbFloat {
+  0%,  100% { transform: translate(0,     0)    scale(1); }
+  25%        { transform: translate(-35px, 22px) scale(1.06); }
+  50%        { transform: translate(18px, -30px) scale(0.94); }
+  75%        { transform: translate(30px,  12px) scale(1.02); }
+}
+
+@keyframes orbFloat2 {
+  0%,  100% { transform: translate(0,    0)    scale(1); }
+  33%        { transform: translate(44px,-18px) scale(0.91); }
+  66%        { transform: translate(-24px,38px) scale(1.07); }
+}
+
+@keyframes livePulse {
+  0%,  100% { opacity: 1;   box-shadow: 0 0 5px  var(--color-accent); }
+  50%        { opacity: 0.5; box-shadow: 0 0 14px var(--color-accent); }
+}
+
+/* ─── Animation Utilities ─── */
+
+@layer utilities {
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in-down {
+    opacity: 0;
+    animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-temp-reveal {
+    opacity: 0;
+    animation: tempReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-250 { animation-delay: 250ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-350 { animation-delay: 350ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-450 { animation-delay: 450ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-570 { animation-delay: 570ms; }
+  .delay-640 { animation-delay: 640ms; }
+  .delay-710 { animation-delay: 710ms; }
+  .delay-780 { animation-delay: 780ms; }
+}

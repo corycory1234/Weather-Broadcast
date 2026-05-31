@@ -1,0 +1,61 @@
+{
+  "welcome": "welcome",
+  "search": {
+    "placeholder": "Search city...",
+    "button": "Search",
+    "label": "City search"
+  },
+  "weather": {
+    "temperature": "Temperature",
+    "feelsLike": "Feels Like",
+    "humidity": "Humidity",
+    "windSpeed": "Wind Speed",
+    "description": "Condition",
+    "updated": "Updated",
+    "noData": "No weather data yet",
+    "unitCelsius": "°C",
+    "unitPercent": "%",
+    "unitWindMs": "m/s"
+  },
+  "forecast": {
+    "title": "7-Day Forecast",
+    "high": "H",
+    "low": "L"
+  },
+  "monthly": {
+    "title": "Monthly Temperature",
+    "subtitle": "16-Day Daily Forecast",
+    "today": "Today",
+    "backToMain": "Back to Home",
+    "viewMonthly": "View Monthly Forecast",
+    "chartLabel": "Temperature Range (°C)",
+    "noCity": "Please select a city first",
+    "high": "H",
+    "low": "L"
+  },
+  "days": {
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
+  },
+  "error": {
+    "cityNotFound": "City not found. Please try again.",
+    "networkError": "Network error. Please try later.",
+    "apiError": "Failed to fetch weather data.",
+    "unknown": "An unknown error occurred."
+  },
+  "loading": {
+    "fetching": "Fetching weather data..."
+  },
+  "ui": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "langToggle": "中文",
+    "siteTitle": "ATMOS",
+    "siteTagline": "Precision weather, instantly."
+  }
+}

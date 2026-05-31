@@ -1,0 +1,61 @@
+{
+  "welcome": "歡迎",
+  "search": {
+    "placeholder": "搜尋城市...",
+    "button": "搜尋",
+    "label": "城市搜尋"
+  },
+  "weather": {
+    "temperature": "溫度",
+    "feelsLike": "體感溫度",
+    "humidity": "濕度",
+    "windSpeed": "風速",
+    "description": "天氣狀況",
+    "updated": "更新時間",
+    "noData": "尚無天氣資料",
+    "unitCelsius": "°C",
+    "unitPercent": "%",
+    "unitWindMs": "m/s"
+  },
+  "forecast": {
+    "title": "七日預報",
+    "high": "最高",
+    "low": "最低"
+  },
+  "monthly": {
+    "title": "當月氣溫預報",
+    "subtitle": "未來16日逐日預報",
+    "today": "今日",
+    "backToMain": "返回主頁",
+    "viewMonthly": "查看當月氣溫預報",
+    "chartLabel": "氣溫區間（°C）",
+    "noCity": "請先選擇城市",
+    "high": "最高",
+    "low": "最低"
+  },
+  "days": {
+    "sun": "週日",
+    "mon": "週一",
+    "tue": "週二",
+    "wed": "週三",
+    "thu": "週四",
+    "fri": "週五",
+    "sat": "週六"
+  },
+  "error": {
+    "cityNotFound": "找不到該城市，請重新輸入",
+    "networkError": "網路錯誤，請稍後再試",
+    "apiError": "取得天氣資料失敗",
+    "unknown": "發生未知錯誤"
+  },
+  "loading": {
+    "fetching": "正在取得天氣資料..."
+  },
+  "ui": {
+    "darkMode": "深色模式",
+    "lightMode": "淺色模式",
+    "langToggle": "EN",
+    "siteTitle": "ATMOS",
+    "siteTagline": "精準氣象，即時掌握"
+  }
+}
