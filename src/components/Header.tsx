@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { SearchBar } from './SearchBar';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
+import { LogoATMOS } from './LogoATMOS';
 
 interface HeaderProps {
   searchValue: string;
@@ -15,15 +15,11 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps) {
   const { searchValue, onSearchChange, onSearch, isDark, onThemeToggle, language, onLanguageToggle } = props;
-  const { t } = useTranslation();
 
   return (
     <header className="animate-fade-in-down sticky top-0 z-50 bg-wx-base border-b border-wx">
       <div className="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between gap-4 min-w-0">
-        {/* Wordmark in mono */}
-        <span className="font-mono font-bold text-wx-base text-sm tracking-tight shrink-0">
-          {t('ui.siteTitle')}
-        </span>
+        <LogoATMOS className="shrink-0" />
 
         {/* Controls */}
         <div className="flex items-center gap-2">
