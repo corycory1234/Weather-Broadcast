@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ATMOS — Summit Radar mark
+  A bold geometric A (mountain peak) with concentric 120° radar arcs above
+  the apex and topographic isobar lines baked into the fill.
+
+  Geometry (512 × 512 canvas, all pre-computed):
+    Outer triangle : apex (256,96) → (56,456) → (456,456)
+    Counter hole   : (256,224) → (214,300) → (298,300)   [above crossbar]
+    Gap hole       : (191,340) → (321,340) → (385,456) → (127,456) [below crossbar]
+
+  Inner-edge offset: ~62 px perpendicular to each leg
+  Crossbar band   : y = 300–340  (57%–67% of the 360 px A height)
+
+  Radar arcs centred at apex (256,96), 120° span (±60° from vertical):
+    endpoint formula: x = 256 ± r·sin60°,  y = 96 − r·cos60°
+    direction: counter-clockwise (upper-left → top → upper-right) → sweep-flag=0
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <pattern id="topo" x="0" y="0" width="512" height="22"
+             patternUnits="userSpaceOnUse">
+      <rect width="512" height="22" fill="#DF7C3C"/>
+      <line x1="0" y1="21" x2="512" y2="21"
+            stroke="#AA4E18" stroke-width="2.5" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <path fill-rule="evenodd" fill="url(#topo)"
+        d="M 256 96 L 56 456 L 456 456 Z
+           M 256 224 L 214 300 L 298 300 Z
+           M 191 340 L 321 340 L 385 456 L 127 456 Z"/>
+
+  <path d="M 230.0 81.0 A 30 30 0 0 0 282.0 81.0"
+        fill="none" stroke="#DF7C3C" stroke-width="22"
+        stroke-linecap="round" opacity="0.95"/>
+  <path d="M 212.7 71.0 A 50 50 0 0 0 299.3 71.0"
+        fill="none" stroke="#DF7C3C" stroke-width="16"
+        stroke-linecap="round" opacity="0.65"/>
+  <path d="M 195.4 61.0 A 70 70 0 0 0 316.6 61.0"
+        fill="none" stroke="#DF7C3C" stroke-width="11"
+        stroke-linecap="round" opacity="0.40"/>
+
+  <circle cx="256" cy="96" r="26" fill="#DF7C3C"/>
+</svg>
